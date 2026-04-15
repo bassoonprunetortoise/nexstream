@@ -1,0 +1,4 @@
+packages:
+  - "backend/shared/*"
+  - "backend/gateway/*"
+  - "backend/services/*"
