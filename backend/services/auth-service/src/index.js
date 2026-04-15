@@ -1,4 +1,4 @@
-require("dotenv").config(); // ✅ ye sabse upar
+require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -7,9 +7,9 @@ const authRoutes = require("./routes/auth.routes");
 const app = express();
 app.use(express.json());
 
-// MongoDB connect
+// ✅ MongoDB Atlas connection
 mongoose
-  .connect("mongodb://localhost:27017/nexstream")
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected ✅"))
   .catch((err) => console.log(err));
 
@@ -20,6 +20,9 @@ app.get("/", (req, res) => {
   res.send("Auth Service Running 🚀");
 });
 
-app.listen(4000, () => {
-  console.log("Server running on port 4000");
+// ✅ Render port fix
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
 });
