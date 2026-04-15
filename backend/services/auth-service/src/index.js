@@ -7,7 +7,7 @@ const authRoutes = require("./routes/auth.routes");
 const app = express();
 app.use(express.json());
 
-// ✅ MongoDB Atlas connection
+// MongoDB connect
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected ✅"))
@@ -20,9 +20,9 @@ app.get("/", (req, res) => {
   res.send("Auth Service Running 🚀");
 });
 
-// ✅ Render port fix
+// ⚠️ IMPORTANT (Render ke liye)
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
-  console.log("Server running on port " + PORT);
+  console.log(`Server running on port ${PORT}`);
 });
